@@ -1,0 +1,10 @@
+body {
+	background: rgba(240, 240, 240, 1);	
+	font-family: 'Open-Sans', sans-serif;
+}
+
+#everything {
+	max-width: 800px;
+	margin: 0 auto;
+}
+

@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html>
-<body>
-<div id="content">
-<h1>Which blogging platform is right for you?</h1>
 
-<p>Take this quiz and you will find out!</p>
-</div>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic,300,400' rel='stylesheet' type='text/css'>
+	<script src="jquery.js"></script>
+	<script src="blogquiz.js"></script>
+</head>
+
+<body>
+	<div id="everything">
+		<h1>Which blogging platform is right for you?</h1>
+		<div id="intro">
+			<p>Take this quiz and you will find out!</p>
+		</div>
+
+
+		<div id="quiz">
+			
+			<div class="questions" id="q-media">
+				<p>Do you want to blog on a well-known platform?</p>
+				<form class="options">
+					<input class="option" type="radio" name="media" id="1-yes" value="true">yes!<br>
+					<input class="option" type="radio" name="media" id="1-no" value="false">nah that's mainstream<br>
+				</form>
+				<button class="next">THIS IS A BUTTON</button>
+			</div>
+			
+			<div class="questions" id="q-social">
+				<h2>HELLO ARE YOU SOCIAL?</H2>
+				<form class="options">
+					<input class="option" type="radio" name="social" value="true">yes!<br>
+					<input class="option" type="radio" name="social" value="false">no i'm a loner<br>
+				</form>
+				<button class="next">THIS IS A BUTTON</button>
+			</div>
+			
+			<div class="questions" id="q-customizable">
+				<h3>do you want to trick that shit out?</h3>
+				<form class="options">
+					<input class="option" type="radio" name="custom" value="true">yes!<br>
+					<input class="option" type="radio" name="custom" value="false">nah that's mainstream<br>
+				</form>
+				<button class="next">THIS IS A BUTTON</button>
+			</div>
+
+
+		</div>
+	</div>
 </body>
+
 </html>
