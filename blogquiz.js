@@ -1,54 +1,66 @@
 $(document).ready(function() {
 
-	//alert("I'm ready!");
+	var questionInfo = function (qname, question, optionYes, optionNo) {
+		this.qname = qname;
+		this.question = question;
+		this.optionYes = optionYes;
+		this.optionNo = optionNo;
+	};
 
-	var myAnswers = new Array();
+		var social = new questionInfo("social", "Do you want your blog to have a built in social network? Do you want to message friends and watch your follower count rise?", "Yeah!", "I don't care");
+		var comments = new questionInfo("comments", "Do you want comments to be avaliable?", "Yes", "Whatever");
+		var custom = new questionInfo("custom","Do you want to customize your blog's appearance?", "Definitely", "Nope");
+		var tech = new questionInfo("tech","Do you have basic tech skills?", "Yes", "Not at all");
+		var writing = new questionInfo("writing","Do you want a platform that puts writing first?", "Sure", "No way");
+		var multimedia = new questionInfo ("multimedia","Do you want a platform that welcomes multimedia content?", "Definitely", "Not really");
+		var free = new questionInfo ("free","Do you want a free platform?", "Yeah", "Doesn't matter");
+		var personal = new questionInfo("personal","Are you going to start a personal blog?", "Yes", "Nope, I'm going to blog about a specific topic");
 
-	function question(divId, inputName) {
-		this.divId = divId;
-		this.inputName = inputName;
-	}
+	var questions = [
+		social,
+		comments,
+		custom,
+		tech,
+		writing,
+		multimedia,
+		free,
+		personal
+	];
 
-	var allQuestions = new Array();
-	allQuestions[0] = new question ($("#q-media"), $("input[name='media']:checked"));
-	allQuestions[1] = new question ($("#q-social"), $("input[name='social']:checked"));
-	allQuestions[2] = new question ($("#q-customizable"), $("input[name='custom']:checked"));
+	var myAnswers = [];
 
 	var n = 0;
 
-	$(".questions").hide();
-
-	allQuestions[n].divId.show();
-
-	var NextButton = function () {
-		allQuestions[n].divId.hide();
-		if (n < allQuestions.length()) {
-			n = n+1;
-			allQuestions[n].divId.show();			
-		} else {
-			alert(myAnswers.toString());
+	var nextButton = function() {
+		//alert("this is happening and n is " + n );
+		if (n != 0) {
+			myAnswers.push($('input:checked').val());
+			//alert("yep still happening");
 		};
 
+		if (n < questions.length) {
+			//alert("HI HELLO HI");
+			$('.question').html(questions[n].question + '<br><form><input type="radio" name="' + questions[n].qname + '" value=1>' + questions[n].optionYes + '<br><input type="radio" name="' + questions[n].qname + '"value=0>' + questions[n].optionNo + '</form>');
+			n++;
+		} else {
+			alert(myAnswers);
+			showFinal();
+		};
 	};
 
-	$('.next').click(function() {
+	var showFinal = function() {
+		$('.question').html(myAnswers);
+	};
 
+	$('button').click(function() {
 
-		// this isn't working.
-		alert(allQuestions[n].toString());
-
-		if (allQuestions[n].inputName.val() == "true") {
-			alert("you said true");
-			myAnswers[n] = 1;
-			NextButton();
-		} else if (allQuestions[n].inputName.val() == "false") {
-			alert("you said false");
-			myAnswers[n] = 0;
-			NextButton();
+		if ($('input').is(':checked')) {
+			alert("I am happy for some reason");
+			nextButton();
 		} else {
-			//alert("click something");
+			alert("CLICK SOMETHING MORON");
 		};
-
 	});
 
+	nextButton();
 });
